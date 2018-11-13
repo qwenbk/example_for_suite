@@ -1,0 +1,104 @@
+.table-responsive
+  %table.table.table-hover.table-striped.table-condensed
+    %caption.center
+    %thead
+      %tr
+        %th.center= Line.human_attribute_name(:filial_id)
+        %th.center.m1= Line.human_attribute_name(:registry_number)
+        %th.center.m1= Line.human_attribute_name(:period)
+        %th.center.m1= Line.human_attribute_name(:level)
+        %th.center.m1= Line.human_attribute_name(:specialty)
+        %th.center.m1= Line.human_attribute_name(:form_of_training)
+        %th.center= Line.human_attribute_name(:ovz)
+        %th.center= Line.human_attribute_name(:mark)
+        %th.center= Line.human_attribute_name(:f_mark)
+        -# %th.center= Line.human_attribute_name(:otkl)
+        -# %th.center= Line.human_attribute_name(:verification)
+        %th.center Причины отклонений от запланированных значений
+
+    %tbody
+      -# =@goz
+      -# =@fact
+      -# =@pr
+      -# =@ob
+      -# =@v
+      -# =@t1
+      -# =@mas3.inspect
+      -# =@mas.size
+      -# =@mas2.inspect
+      -# - @lines
+      %tr
+        %td.center
+          = @t1.filial.name
+        %td.m
+          = @t1.registry_number
+        %td.m1
+          = @t1.period
+        %td.m1
+          = @t1.level
+        %td.m1
+          = @t1.specialty
+        %td.m
+          = @t1.form_of_training
+        %td
+          = @t1.ovz
+        %td.center= @goz
+        %td.center
+          = @fact
+
+        -# %td.center
+        -#   = my_true(line.verification)
+        %td
+          Приём:
+          =@pr
+          Обучаются:
+          =@ob
+          Выпуск:
+          =@v
+          %br
+            %dl
+              -for v in @mas3
+                %br
+                %dt
+                  =v[0].kind
+                  -sum = 0
+                  -for k in v
+                    -sum +=k.sourses.sum(:value)
+                  =sum
+                  =v[0].name
+                  -for k in v
+                    %dd
+                      -k.sourses.each do |sourse|
+                        %dd
+                          =sourse.value
+                          чел.
+                          -# =sourse.kind1
+                          =sourse.kind
+                          от
+                          =sourse.date_of
+                          №
+                          =sourse.number
+              -# -@mas3.each do |reason|
+              -#   %dt
+              -#     =reason.kind
+              -#     =reason.value
+              -#     =reason.name
+              -#     -reason.sourses.each do |sourse|
+              -#       %dd
+              -#         =sourse.value
+              -#         чел.
+              -#         =sourse.kind1
+              -#         =sourse.kind
+              -#         от
+              -#         =sourse.date_of
+              -#         №
+              -#         =sourse.number
+      -#
+      -#         -# = link_to edit_reason_path(reason), class: 'btn btn-info fa-lg' do
+      -#         -#   Редактировать причину
+      -#         -#   = fa_icon :edit
+      -#         -#
+      -#         -# = link_to reason, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+      -#         -#   Удалить причину
+      -#         -#   = fa_icon :times
+      -#       -# %br

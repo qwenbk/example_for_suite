@@ -1,0 +1,63 @@
+= form_for @sourse do |f|
+  - if @sourse.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@sourse.errors.count, "error")} prohibited this sourse from being saved:"
+      %ul
+        - @sourse.errors.full_messages.each do |message|
+          %li= message
+
+  .container
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :value
+          .input-group
+            %span.input-group-addon
+              = fa_icon :fire
+            = f.number_field :value, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :kind
+          .input-group
+            %span.input-group-addon
+              = fa_icon :pencil
+            = f.text_field :kind, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :number
+          .input-group
+            %span.input-group-addon
+              = fa_icon "plus-square"
+            = f.text_field :number, class: 'form-control'
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :date_of
+          .input-group
+            %span.input-group-addon
+              = fa_icon :calendar
+            = f.date_field :date_of, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :reason_id
+          .input-group
+            %span.input-group-addon
+              = fa_icon :book
+            = f.text_field :reason_id, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :comment
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.text_field :comment, class: 'form-control'
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :kind1
+          .input-group
+            %span.input-group-addon
+              = fa_icon "newspaper-o"
+            = f.select :kind1, options_for_select(some2, f.object.kind1),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"

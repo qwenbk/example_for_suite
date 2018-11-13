@@ -1,0 +1,31 @@
+%h1.center Список всех филиалов
+%h1 List of products
+=link_to 'Download as .xlsx', filials_path(format: :xlsx)
+
+%table
+  %thead
+    %tr
+      %th.center= Filial.human_attribute_name(:name)
+      %th.center= Filial.human_attribute_name(:description)
+      %th
+
+  %tbody
+    - @filials.each do |filial|
+      %tr
+        %td.center= filial.name
+        %td.center= filial.description
+        %td.center
+          = link_to filial, class: 'btn btn-warning fa-lg' do
+            = fa_icon :eye
+
+          = link_to edit_filial_path(filial), class: 'btn btn-info fa-lg' do
+            = fa_icon :edit
+
+          = link_to filial, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+            = fa_icon :times
+
+%br
+
+  = link_to new_filial_path, class: 'btn btn-success fa-lg' do
+    = fa_icon :plus
+    Создать новый филиал

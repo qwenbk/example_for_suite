@@ -1,0 +1,62 @@
+-# <p id="notice"><%= notice %></p>
+-#
+-# <h1>Users</h1>
+-#
+-# <table>
+-#   <thead>
+-#     <tr>
+-#       <th>Name</th>
+-#       <th colspan="3"></th>
+-#     </tr>
+-#   </thead>
+-#
+-#   <tbody>
+-#     <% @users.each do |user| %>
+-#       <tr>
+-#         <td><%= user.name %></td>
+-#         <td><%= link_to 'Show', user %></td>
+-#         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+-#         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+-#       </tr>
+-#     <% end %>
+-#   </tbody>
+-# </table>
+-#
+-# <br>
+-#
+-# <%= link_to 'New User', new_user_path %>
+%h1.center Список пользователей
+
+%table
+  %thead
+    %tr
+      %th.center= User.human_attribute_name(:first_name)
+      %th.center= User.human_attribute_name(:second_name)
+      %th.center= User.human_attribute_name(:last_name)
+      %th.center= User.human_attribute_name(:email)
+      %th.center Роли
+      %th.center
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        -# = render user
+        %td.center= user.first_name
+        %td.center= user.second_name
+        %td.center= user.last_name
+        %td.center= user.email
+        %td.center= user.roles.map{|k,v| k.name}
+        %td.center
+
+          = link_to edit_user_path(user), class: 'btn btn-info fa-lg' do
+            = fa_icon :edit
+
+          = link_to user, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+            = fa_icon :times
+
+
+%br
+
+  = link_to new_user_path, class: 'btn btn-success fa-lg' do
+    = fa_icon :plus
+    Создать нового пользователя

@@ -1,0 +1,18 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to edit_section_path(@section), class: 'btn btn-info fa-lg' do
+  = fa_icon "edit"
+
+%br
+%br
+
+%p
+  %b Kind:
+  = @section.kind
+%p
+  %b Comment:
+  = @section.comment
+%p
+  %b Task:
+  = @section.task.year

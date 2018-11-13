@@ -1,0 +1,21 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to edit_reason_path(@reason), class: 'btn btn-info fa-lg' do
+  = fa_icon "edit"
+
+%br
+%br
+
+%p
+  %b Name:
+  = @reason.name
+%p
+  %b Kind:
+  = @reason.kind
+%p
+  %b Value:
+  = @reason.value
+%p
+  %b Line:
+  = @reason.line_id

@@ -1,0 +1,566 @@
+input
+  width: 300px
+  font-size: 13px
+  padding: 6px 0 3px 10px
+  border: 1px solid #cecece
+  background: #F6F6f6
+  border-radius: 0px, 8px, 8px, 0px
+
+table
+  border: 1px solid #6cf
+
+
+th
+  background: #56433D
+  color: #F9C941
+  border-right: 2px solid
+  font-weight: normal
+  border: 1px solid #0865c2
+  border-bottom: 1px solid #fff
+  text-align: center
+  vertical-align: middle !important
+td
+  text-align: left
+  vertical-align: middle !important
+  color: #669
+  border: 1px dashed #6cf
+tr:hover td
+  background: #D1C7BF
+.mybox
+  min-width: 340px
+  max-width: 340px
+.w50
+  width: 31%
+.my-left
+  margin-left: 5%
+.center
+  text-align: center
+.top-my
+  display: block
+  width: 30%
+  max-height: 40%
+  overflow: hidden
+  text-align: center
+  margin-top: 3%
+  margin-left: auto
+  margin-right: auto
+.top-my2
+  display: block
+  width: 30%
+  max-height: 40%
+  overflow: hidden
+  text-align: center
+  margin-top: 1%
+  margin-left: 45%
+  margin-right: auto
+.actions
+  min-width: 100%
+header
+  min-height: 3% // $body-bg: #FFFFFF
+.mf
+  width: 100%
+  height: 50px
+.m
+  max-width: 100px
+  word-break: break-all
+.m1
+  max-width: 100px
+
+// $navbar-default-bg: #fff
+// $navbar-default-link-color: #333
+// $navbar-margin-bottom: 0
+// $navbar-inverse-bg: #438EB9 // #01579b
+// $navbar-inverse-link-color: lighten(#000, 90%)
+// $navbar-inverse-link-hover-color: #fff
+// $navbar-inverse-link-active-color: $navbar-inverse-link-color
+// $navbar-inverse-link-hover-bg: darken($navbar-inverse-bg, 5%)
+// $navbar-inverse-toggle-hover-bg: $navbar-inverse-link-hover-bg
+// $navbar-inverse-toggle-border-color: $navbar-inverse-bg
+// $dropdown-border: $navbar-inverse-bg
+// $dropdown-link-color: $navbar-inverse-link-color
+// $dropdown-link-hover-color: $navbar-inverse-link-hover-color
+// $dropdown-link-hover-bg: $navbar-inverse-link-hover-bg
+// $dropdown-link-active-color: $navbar-inverse-link-color
+// $dropdown-link-active-bg: $navbar-inverse-bg
+// $dropdown-fallback-border: $navbar-inverse-bg
+//
+// $navbar-height: 56px
+// $font-size-base: 16px
+// $border-radius-base: 0
+// $border-radius-small: 0
+// $border-radius-large: 0
+// $breadcrumb-padding-horizontal: 0
+//
+// $breadcrumb-separator: '❯'
+// $breadcrumb-bg: $body-bg
+//
+// $dark-blue: darken($navbar-inverse-bg, 10%)
+// $light_blue: lighten($navbar-inverse-bg, 40%)
+// $nav-tabs-border-color: $dark-blue
+// $nav-tabs-link-hover-border-color: $dark-blue
+// $nav-tabs-active-link-hover-border-color: $dark-blue
+//
+// $btn-default-bg: #c2c2c2
+// //$brand-primary: #1A3063 // #1ab394
+// //$brand-success: #1c84c6
+// //$brand-info: #23c6c8
+// //$brand-warning: #f8ac59
+// //$brand-danger: #ed5565
+//
+// $brand-purple: #727cb6
+//
+// //$input-border-focus: $brand-primary
+// $text-muted: #999
+// $text-yellow: #EEEE00
+//
+//
+// @import fonts
+//
+// @import buttons
+// @import sidebar
+// @import main
+// @import navbar
+// @import welcome
+//
+// $body-bg: #FFFFFF
+$navbar-default-bg: #d3d3d3
+$navbar-default-link-color: black
+// $navbar-margin-bottom: 0
+
+$navbar-inverse-bg: #438EB9 // #01579b
+$navbar-inverse-link-color: lighten(#000, 90%)
+$navbar-default-link-hover-color: white
+$navbar-default-link-hover-bg: black
+$navbar-default-link-active-bg: darken($navbar-default-bg, 70%)
+$navbar-default-link-active-color: white
+$dropdown-link-hover-bg: darken($navbar-default-link-color, 25%)
+$screen-sm: 1100px
+$input-border-focus: orange
+
+// $navbar-inverse-link-hover-color: black
+// $navbar-inverse-link-active-color: $navbar-inverse-link-color
+// $navbar-inverse-link-hover-bg: darken($navbar-inverse-bg, 5%)
+// $navbar-inverse-toggle-hover-bg: $navbar-inverse-link-hover-bg
+// $navbar-inverse-toggle-border-color: $navbar-inverse-bg
+// $dropdown-border: $navbar-inverse-bg
+// $dropdown-link-color: $navbar-inverse-link-color
+// $dropdown-link-hover-color: $navbar-inverse-link-hover-color
+$dropdown-link-hover-bg: $navbar-inverse-bg
+// $dropdown-link-active-color: $navbar-inverse-link-color
+$dropdown-link-active-bg: $navbar-inverse-bg
+// $dropdown-fallback-border: $navbar-inverse-bg
+//
+// $navbar-height: 56px
+// $font-size-base: 16px
+// $border-radius-base: 0
+// $border-radius-small: 0
+// $border-radius-large: 0
+// $breadcrumb-padding-horizontal: 0
+// $breadcrumb-separator: '❯'
+// $breadcrumb-bg: $body-bg
+//
+// $dark-blue: darken($navbar-inverse-bg, 10%)
+// $light_blue: lighten($navbar-inverse-bg, 40%)
+// $nav-tabs-border-color: $dark-blue
+// $nav-tabs-link-hover-border-color: $dark-blue
+// $nav-tabs-active-link-hover-border-color: $dark-blue
+//
+$btn-default-bg: #c2c2c2
+$brand-primary:  #1ab394
+$brand-success: #1c84c6
+$brand-info: #23c6c8
+$brand-warning: #f8ac59
+$brand-danger: #ed5565
+//
+// $brand-purple: #727cb6
+//
+// $input-border-focus: $brand-primary
+// $text-muted: #999
+$text-yellow: #EEEE00
+
+body
+  font-family: 'Open Sans'
+
+.light
+  font-family: 'Open Sans'
+  font-weight: 100
+
+.intro
+  font-family: 'Intro'
+
+
+h1, h2, h3
+  margin-top: 10px
+  margin-bottom: 10px
+
+.page-header
+  h1, h2, h3
+    @extend .light
+
+.field_with_errors
+  @extend .has-error
+
+.box
+  background: #fff
+  border-color: #e7eaec
+  border-width: 5px 0 0
+  border-style: solid
+  padding: 15px 20px 20px
+  margin: 20px 0
+  height: 75px
+  width: 30%
+  .page-header
+    margin-top: 0
+
+a
+  transition: all .1s
+  &:hover, &:active, &:focus
+    text-decoration: none
+
+.label
+  font-weight: normal
+  border-radius: 0
+
+.toleft
+  display: inline-block
+  .label
+    font-family: 'Intro'
+    font-size: 90%
+    display: inline-block
+    padding: 4px 8px 4px 8px
+    min-width: 110px
+    .tiny
+      font-size: 75%
+    .text-warning
+      color: $text-yellow
+  .link
+    font-family: 'Intro'
+
+.toright
+  float: center
+.center1
+  margin-left: 20%
+
+// .navbar-default
+//   background: #563e43
+// .navbar-nav
+//   li
+//     a
+//       text-decoration-color: red
+// .nav
+//   a
+//     font-size: 14px
+//     color: red
+//     &:hover
+//       background-color: #fff
+//       color: #c0301c
+
+//   .label
+//     font-family: 'Intro'
+//     font-size: 90%
+//     display: inline-block
+//     padding: 4px 8px 4px 8px
+//     min-width: 110px
+//     .tiny
+//       font-size: 75%
+//     .text-warning
+//       color: $text-yellow
+//   .link
+//     font-family: 'Intro'
+//
+// .center
+//   text-align: center
+// .left
+//   text-align: left
+// .right
+//   text-align: right
+// .label-circle
+//   border-radius: 25%
+//   font-family: 'Intro'
+//   font-size: 60%
+//
+// .alert-block
+//   position: absolute
+//   right: 0
+//   top: 70px
+//   z-index: 5
+//   margin-right: 30px
+//   opacity: .8
+//
+// .growl-msg
+//   display: none
+//
+// .btn-toolbar
+//   margin: 20px 0
+//
+// .table
+//   th
+//     text-align: center
+//     vertical-align: middle !important
+//   &.center
+//     td
+//       text-align: center
+//       vertical-align: middle !important
+// .p50
+//   width: 50px
+//
+// .easy-hidden
+//   display: none
+//
+// #date_selector
+//   position: fixed
+//   top: $navbar-height + 5px
+//   z-index: 1000
+//   border-radius: 5px 5px 5px 5px
+//   padding: 10px 10px 10px 10px
+//   background-color: rgba(255, 255, 255, 0.9)
+//   border-style: solid
+//   border-width: 1px
+//   .padding5
+//     display: inline-block
+//     padding-top: 10px
+//     padding-right: 5px
+//     position: relative
+//
+// .breadcrumb
+//   text-align: left
+//   margin: 0px 0px 0px 0px
+//   padding: 0px 0px 0px 0px
+// .sqlabel
+//   padding: 5px 5px 5px 5px
+//   color: #fff
+//   display: inline-block
+//   margin: 2px 2px 2px 2px
+//   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6)
+//   min-width: 75px
+// .tiny
+//   text-align: center
+//   font-size: 80%
+// .big
+//   font-family: 'Intro'
+//   text-align: center
+//   font-size: 140%
+// .badge
+//   &.red
+//     float: none
+//     background: $brand-danger
+//     min-width: 60px
+//     font-size: 80%
+//     display: inline-block
+//   &.green
+//     float: none
+//     background: $brand-success
+//     min-width: 60px
+//     font-size: 80%
+//     display: inline-block
+//   &.yellow
+//     float: none
+//     background: $brand-warning
+//     min-width: 60px
+//     font-size: 80%
+//     display: inline-block
+//   &.grey
+//     float: none
+//     background: $gray-light
+//     min-width: 60px
+//     font-size: 80%
+//     display: inline-block
+//   &.blue
+//     float: none
+//     background: $brand-primary
+//     min-width: 60px
+//     font-size: 80%
+//     display: inline-block
+//   &.lightblue
+//     float: none
+//     background: $brand-info
+//     min-width: 60px
+//     font-size: 80%
+//     display: inline-block
+//   &.badge-middle
+//     min-width: 100px
+//   &.badge-long
+//     min-width: 130px
+// .notop
+//   border-top-style: none
+// .nobottom
+//   border-bottom-style: none
+// .alert-label
+//   @extend .alert
+//   padding: 5px 15px 5px 15px
+//   margin-bottom: 15px
+//   font-size: 85%
+//   font-family: Intro
+//   width: 100px
+//   text-align: center
+//   border-radius: 7px
+//   $x_sizes: (150 200 300 400 500 600)
+//   @each $x_size in $x_sizes
+//     &.x#{$x_size}
+//       width: #{$x_size}px
+// .panel
+//   .panel-body
+//     .nomargins
+//       margin: 0px 0px 0px 0px
+//       padding: 0px 0px 0px 0px
+//       .list-group
+//         margin-bottom: 0px
+// .panel-default
+//   .panel-heading
+//     background-color: #eeeeee
+//     border-color: #ddd
+// .panel-wave
+//   border-color: darken(#e0f2f1, 5%)
+//   .panel-heading
+//     background-color: #e0f2f1
+//     color: darken(#b2dfdb, 40%)
+// .green-text
+//   color: darken($brand-success, 15%)
+//   font-family: 'Intro'
+// .green-text-thin
+//   color: darken($brand-success, 15%)
+//   font-style: italic
+// .form-group
+//   .long-element
+//     width: auto
+// .icon-button
+//   cursor: pointer
+// .remove_fields
+//   color: inherit
+//   &:hover
+//     color: inherit
+// .mymodal
+//   height: 100%
+//   top: 25%
+//   width: 100%
+//   text-align: center
+// $paddings: (5 10 20 30 40 50)
+// @each $padding  in $paddings
+//   .left#{$padding}
+//     padding-left: #{$padding}px
+//   .right#{$padding}
+//     padding-right: #{$padding}px
+//   .mleft#{$padding}
+//     margin-left: #{$padding}px
+//   .mright#{$padding}
+//     margin-right: #{$padding}px
+//
+// @media print
+//   a[href]:after
+//     content: none
+//   #wrapper
+//     padding-left: 0
+//     padding-top: 0
+//     #sidebar-wrapper
+//       width: 0
+//     #page-content-wrapper
+//       position: relative
+//       margin-right: 0
+//     #sidebar-toggle
+//       left: 0
+// $percents: (90 85 80 75 70 65 60 55 50 40 30 20 10 5)
+// @each $percent in $percents
+//   .small#{$percent}
+//     font-size: #{$percent+'%'}
+//     padding: #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)} #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)}
+// .bottom20
+//   padding-bottom: 20px
+//
+// table
+//   border: 1px solid #6cf
+//
+//
+// th
+//   background: #56433D
+//   color: #F9C941
+//   border-right: 2px solid
+//   font-weight: normal
+//   border: 1px solid #0865c2
+//   border-bottom: 1px solid #fff
+//   text-align: center
+//   vertical-align: middle !important
+// td
+//   text-align: center
+//   vertical-align: middle !important
+//   color: #669
+//   border-right: 1px dashed #6cf
+// tr:hover td
+//   background: #D1C7BF
+//
+// .mybox
+//   min-width: 406px
+
+.w20
+  width: 50%
+
+@import scaffolds
+@import bootstrap-sprockets
+@import bootstrap
+@import bootstrap-select
+@import users
+@import tasks
+@import lines
+
+@import font-awesome
+@import bootstrap/navs
+@import bootstrap/navbar
+@import homes
+
+input[type="checkbox"].switch_1
+  font-size: 20px
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  width: 3.5em
+  height: 1.5em
+  background: #ddd
+  border-radius: 3em
+  position: relative
+  cursor: pointer
+  outline: none
+  -webkit-transition: all .2s ease-in-out
+  transition: all .2s ease-in-out
+  left: 1px
+
+input[type="checkbox"].switch_1:checked
+  background: green
+
+
+input[type="checkbox"].switch_1:after
+  position: absolute
+  content: ""
+  width: 1.5em
+  height: 1.5em
+  border-radius: 50%
+  background: #fff
+  -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3)
+          box-shadow: 0 0 .25em rgba(0,0,0,.3)
+  -webkit-transform: scale(.7)
+          transform: scale(.7)
+  left: 0
+  -webkit-transition: all .2s ease-in-out
+  transition: all .2s ease-in-out
+
+
+input[type="checkbox"].switch_1:checked:after
+  left: calc(100% - 1.5em)
+
+
+.white
+  color: white
+.m_error
+  background-color: #ff4d4d
+  color: white
+  box-shadow: 1px
+h3
+  text-align: center
+  font-size: 30px
+// td
+//   font-size: 20px
+//   padding: 5px
+//   text-align: justify
+// th
+//   font-size: 14px
+//   padding: 2px
+.btn.dropdown-toggle.btn-default
+  background-color: white

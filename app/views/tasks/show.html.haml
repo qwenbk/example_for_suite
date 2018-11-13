@@ -1,0 +1,22 @@
+
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to edit_task_path(@task), class: 'btn btn-info fa-lg' do
+  = fa_icon "edit"
+
+.container
+  %h3
+    %b Госзадание
+    = @task.year
+  %h3 Часть 1. Сведения об оказываемых государственных услугах
+  %p= @task.comment
+
+%table
+  - @task.sections.each do |sections|
+    %tr
+      %td
+        = sections.kind
+      %td
+        = link_to lines_path(:section_id => sections.id), class: 'btn btn-primary' do
+          Редактирование

@@ -1,0 +1,87 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+%br
+%br
+= form_for @line do |f|
+  - if @line.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@line.errors.count, "error")} prohibited this line from being saved:"
+      %ul
+        - @line.errors.full_messages.each do |message|
+          %li= message
+  %table.table.table-hover.table-striped
+    %thead
+      %tr
+        %th.center= Line.human_attribute_name(:filial_id)
+        %th.center= Line.human_attribute_name(:registry_number)
+        %th.center= Line.human_attribute_name(:period)
+        %th.center= Line.human_attribute_name(:level)
+
+    %tbody
+      %tr
+        %td.center= @line.filial.name
+        %td.center= @line.registry_number
+        %td.center= @line.period
+        %td.center= @line.level
+
+  %table.table.table-hover.table-striped
+    %thead
+      %tr
+        %th.center= Line.human_attribute_name(:specialty)
+        %th.center= Line.human_attribute_name(:form_of_training)
+        %th.center= Line.human_attribute_name(:ovz)
+        %th.center= Line.human_attribute_name(:mark)
+        %th.center= Line.human_attribute_name(:f_mark)
+
+    %tbody
+      %tr
+        %td.center= @line.specialty
+        %td.center= @line.form_of_training
+        %td.center= @line.ovz
+        %td.center= @line.mark
+        %td.center
+          - fmark =fact_mark(@line)
+          =fmark
+  .container
+    .row
+      .col-xs-4
+        .form-group
+          = f.label :recruitment
+          .input-group
+            %span.input-group-addon
+              = fa_icon "hand-pointer-o"
+            = f.number_field :recruitment, class: 'form-control'
+      .col-xs-4
+        .form-group
+          = f.label :studying
+          .input-group
+            %span.input-group-addon
+              = fa_icon "graduation-cap"
+            = f.number_field :studying, class: 'form-control'
+      .col-xs-4
+        .form-group
+          = f.label :release
+          .input-group
+            %span.input-group-addon
+              = fa_icon "hand-peace-o"
+            = f.number_field :release, class: 'form-control'
+    .row
+      .col-lg-12
+        .form-group
+          = f.label :comment
+          .input-group
+            %span.input-group-addon
+              = fa_icon :comment
+            = f.text_field :comment, class: 'form-control'
+    .row
+      .col-lg-12
+        -if fmark >= @line.mark
+          .form-group
+            = f.label :verification
+            .input-group
+              = f.check_box :verification, class: 'switch_1'
+        -else
+          .alert.alert-danger
+            Вы не можете подтвердить данные (фактическое значение госзадания меньше самого госзадания)
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"

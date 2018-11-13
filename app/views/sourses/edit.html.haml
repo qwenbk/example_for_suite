@@ -1,0 +1,9 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to edit_sourse_path(@sourse), class: 'btn btn-info fa-lg' do
+  = fa_icon "edit"
+
+%h1.center Редактирование источника отклонения
+
+= render 'form'

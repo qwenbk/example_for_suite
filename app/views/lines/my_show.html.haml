@@ -1,0 +1,30 @@
+%h1.center Список всех филиалов
+%table.table.table-hover.table-striped
+  %thead
+    %tr
+      %th.center= Line.human_attribute_name(:filial_id)
+      %th.center  Заполнено пунктов
+      %th.center  Отклонение от ГЗ в %
+  %tbody
+    -d = Array.new
+    -d1 = Array.new
+    - @b.each do |k,v|
+      %tr
+        -f = Filial.find(k)
+        %td.center= f.name
+        %td.center
+          =v[1]? v[1] : v[1] = 0
+          из
+          =v[0]
+          =" (#{((v[1] / v[0].to_f * 100)*100).round / 100 }%)"
+          -d << [f.name,[v[0]-v[1]]]
+        %td.center
+          -if v[1] == 0
+            \-100
+          -else
+            -if v[0] != v[1]
+              \-
+              =(my_otkl(f,@t)%100).to_i
+            -else
+              =(my_otkl(f,@t)%100).to_i
+=column_chart d, colors: ['#990000'], title: 'Осталось заполнить филиалами', label: 'Значение', xtitle: "Филиалы", ytitle: "Количество незаполненных строк"

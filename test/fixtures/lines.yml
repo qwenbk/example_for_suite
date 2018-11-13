@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registry_number: MyString
+  period: MyString
+  level: MyString
+  specialty: MyString
+  form_of_training: MyString
+  ovz: MyString
+  mark: 1.5
+  verification: false
+  section: one
+
+two:
+  registry_number: MyString
+  period: MyString
+  level: MyString
+  specialty: MyString
+  form_of_training: MyString
+  ovz: MyString
+  mark: 1.5
+  verification: false
+  section: two

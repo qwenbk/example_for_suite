@@ -1,0 +1,53 @@
+= form_for @task do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+      %ul
+        - @task.errors.full_messages.each do |message|
+          %li= message
+
+
+
+  .container
+    .row
+      .col-lg-6
+        .form-group
+          = f.label :year
+          .input-group
+            %span.input-group-addon
+              = fa_icon :calendar
+            = f.number_field :year, class: 'form-control'
+      .col-lg-6
+        .form-group
+          = f.label :comment
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.text_field :comment, class: 'form-control'
+
+  -# .container
+  -#   .row
+  -#     %h3 Разделы госзадания
+  -#     %hr
+  -#     = f.fields_for :sections do |sections|
+  -#       .col-md-4
+  -#         = render 'section_fields', f: sections
+  -# .container
+  -#   .links
+  -#     = link_to_add_association f, :sections, class: 'btn btn-success' do
+  -#       = fa_icon :plus
+  -#       Добавить Раздел
+  -#   .actions
+  -#     = submit_tag "Создать",  class: "btn btn-primary"
+  -# %br
+  .container
+    = f.fields_for :sections do |sections|
+      = render 'section_fields', f: sections
+  .container
+    .links
+      = link_to_add_association f, :sections, class: 'btn btn-success' do
+        = fa_icon :plus
+        Добавить Раздел
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"
+  %br

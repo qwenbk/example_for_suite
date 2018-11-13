@@ -1,0 +1,28 @@
+- if params[:section_id].present?
+  %h5= Section.all.find(params[:section_id]).kind
+%table
+  %thead
+    %tr
+      %th Registry number
+      %th Period
+      %th Level
+      %th Specialty
+      %th Form of training
+      %th Ovz
+      %th Mark
+      %th Verification
+
+  %tbody
+    %tr
+      %td= @line.registry_number
+      %td= @line.period
+      %td= @line.level
+      %td= @line.specialty
+      %td= @line.form_of_training
+      %td= @line.ovz
+      %td= @line.mark
+      %td= @line.verification
+
+= link_to 'Edit', edit_line_path(@line)
+\|
+= link_to 'Back', lines_path

@@ -1,0 +1,58 @@
+.nested-fields
+  .row
+    .col-md-12
+      .panel.panel-success
+        .panel-heading
+          Источник
+          %span.toright
+            = link_to_remove_association f, class: 'btn btn-danger fa-lg' do
+              = fa_icon :times
+          .clearfix
+        .panel-body
+          .container
+            .row
+              .col-lg-4
+                .form-group
+                  = f.label :value
+                  .input-group
+                    %span.input-group-addon
+                      = fa_icon :fire
+                    = f.number_field :value, class: 'form-control'
+              .col-lg-4
+                .form-group
+                  = f.label :kind
+                  .input-group
+                    %span.input-group-addon
+                      = fa_icon :pencil
+                    = f.text_field :kind, class: 'form-control'
+            .row
+              .col-lg-4
+                .form-group
+                  = f.label :number
+                  .input-group
+                    %span.input-group-addon
+                      = fa_icon "plus-square"
+                    = f.text_field :number, class: 'form-control'
+              .col-lg-4
+                .form-group
+                  = f.label :date_of
+                  .input-group
+                    %span.input-group-addon
+                      = fa_icon :calendar
+                    = f.date_field :date_of, class: 'form-control'
+            .row
+              .col-lg-4
+                .form-group
+                  = f.label :kind1
+                  .input-group
+                    %span.input-group-addon
+                      = fa_icon "newspaper-o"
+                    -# = f.select :kind1, options_for_select(some2, f.object.kind1), class: 'form-control'
+                    =f.text_field :kind1, class: 'form-control'
+              .col-lg-4
+                .form-group
+                  = f.label :comment
+                  .input-group
+                    %span.input-group-addon
+                      = fa_icon :commenting
+                    = f.text_field :comment, class: 'form-control'

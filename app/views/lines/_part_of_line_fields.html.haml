@@ -1,0 +1,49 @@
+.nested-fields
+  .container
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :recruitment
+          .input-group
+            %span.input-group-addon
+              = fa_icon "hand-pointer-o"
+            = f.number_field :recruitment, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :studying
+          .input-group
+            %span.input-group-addon
+              = fa_icon "graduation-cap"
+            = f.number_field :studying, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :release
+          .input-group
+            %span.input-group-addon
+              = fa_icon "hand-peace-o"
+            = f.number_field :release, class: 'form-control'
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :comment
+          .input-group
+            %span.input-group-addon
+              = fa_icon :comment
+            = f.text_field :comment, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :filial_id
+          .input-group
+            %span.input-group-addon
+              = fa_icon :book
+            = f.select(:filial_id,options_for_select(Filial.all.pluck('name, id'), f.object.filial_id),{}, class: 'form-control selectpicker', "data-live-search" => "true" )
+      .col-lg-4
+        .form-group
+          = f.label :line_id
+          .input-group
+            %span.input-group-addon
+              = fa_icon :book
+            = f.text_field :line_id, class: 'form-control'
+
+    -# = link_to_remove_association f, class: 'btn btn-danger fa-lg' do
+    -#   = fa_icon :times

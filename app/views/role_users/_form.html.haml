@@ -1,0 +1,16 @@
+= form_for @role_user do |f|
+  - if @role_user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@role_user.errors.count, "error")} prohibited this role_user from being saved:"
+      %ul
+        - @role_user.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :user
+    = f.select :user_id, options_for_select(User.all.pluck('email','id'), f.object.user_id),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+  .field
+    = f.label :role
+    = f.select :role_id, options_for_select(Role.all.map { |e| ["#{e.name + " "+e.description}", e.id] }, f.object.role_id),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+  .actions
+    = f.submit 'Save'

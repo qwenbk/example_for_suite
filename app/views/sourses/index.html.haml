@@ -1,0 +1,42 @@
+%h1.center Список источников отклонения
+
+%table
+  %thead
+    %tr
+      %th.center= Sourse.human_attribute_name(:value)
+      %th.center= Sourse.human_attribute_name(:kind)
+      %th.center= Sourse.human_attribute_name(:number)
+      %th.center= Sourse.human_attribute_name(:kind1)
+      %th.center= Sourse.human_attribute_name(:date_of)
+      %th.center= Sourse.human_attribute_name(:reason_id)
+      %th.center= Sourse.human_attribute_name(:comment)
+      %th
+      %th
+      %th
+
+  %tbody
+    - @sourses.each do |sourse|
+      %tr
+        %td.center= sourse.value
+        %td.center= sourse.kind
+        %td.center= sourse.number
+        %td.center= sourse.kind1
+        %td.center= sourse.date_of
+        %td.center= sourse.reason.name
+        %td.center= sourse.comment
+        %td.center
+          = link_to sourse, class: 'btn btn-warning fa-lg' do
+            = fa_icon :eye
+
+          = link_to edit_sourse_path(sourse), class: 'btn btn-info fa-lg' do
+            = fa_icon :edit
+
+          = link_to sourse, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+            = fa_icon :times
+
+
+%br
+
+  = link_to new_sourse_path, class: 'btn btn-success fa-lg' do
+    = fa_icon :plus
+    Создать новый источник отклонения

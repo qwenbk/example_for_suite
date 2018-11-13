@@ -1,0 +1,50 @@
+%h1.center Список причин отклонений
+
+%table.table.table-hover.table-striped
+  %thead
+    %tr
+      %th.center= Reason.human_attribute_name(:name)
+      %th.center= Reason.human_attribute_name(:kind)
+      %th.center= Reason.human_attribute_name(:value)
+      %th.center Источники
+      %th
+
+  %tbody
+    - @reasons.each do |reason|
+      %tr
+        %td.center= reason.name
+        %td.center= reason.kind
+        %td.center= reason.value
+        %td.center
+          .m_error
+            -if reason.value != reason.sourses.sum(:value)
+              .m_error
+                Источники не соответствуют значению отклонеия
+                -# = reason.sourses.sum(:value)
+                -# ,а должно быть
+                -# =reason.value
+          -reason.sourses.each do |sourse|
+            %dd
+              =sourse.value
+              чел.
+              =sourse.kind1
+              =sourse.kind
+              от
+              =sourse.date_of
+              №
+              =sourse.number
+        -if ((User.current_role[0] == "Оператор" and (Line.find(params[:line_id]).verification != true) if params[:line_id] ) or (User.current_role[0]!="Оператор"))
+          %td.center
+            = link_to reason, class: 'btn btn-warning fa-lg' do
+              = fa_icon :eye
+
+            = link_to edit_reason_path(reason), class: 'btn btn-info fa-lg' do
+              = fa_icon :edit
+
+            = link_to reason, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+              = fa_icon :times
+%br
+  -if ((User.current_role[0] == "Оператор" and (Line.find(params[:line_id]).verification != true) if params[:line_id] ) or (User.current_role[0]!="Оператор"))
+    = link_to new_reason_path(:line_id => params[:line_id]), class: 'btn btn-success fa-lg' do
+      Создать новую причину отклонения
+      = fa_icon :plus

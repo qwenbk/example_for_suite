@@ -1,0 +1,20 @@
+%h1.center Государственное задание на
+.container
+  .row
+    - @tasks.each do |task|
+      .col-md-4.col-sm-6
+        .index-block
+          %dl
+            %b= task.year
+            год
+          = link_to task, class: 'btn btn-warning fa-lg' do
+            = fa_icon :eye
+
+          = link_to edit_task_path(task), class: 'btn btn-info fa-lg' do
+            = fa_icon :edit
+
+          = link_to task, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+            = fa_icon :times
+  = link_to new_task_path, class: 'btn btn-success fa-lg' do
+    = fa_icon :plus
+    Создать на следующий год

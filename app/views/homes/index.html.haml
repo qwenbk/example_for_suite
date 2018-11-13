@@ -1,0 +1,64 @@
+%h3.center Добро Пожаловать на сайт
+-# %p.center Вам доступно следующие ссылки
+%h4.center
+  Выбрана Роль
+  = User.current_role[0]
+%h4.center
+  Ваш вид доступа:
+  = User.current_role[1]
+-# %p.center
+-#   id роли:
+-#   = User.current_role[2]
+%h4.center
+  = link_to Task.last, class: 'btn btn-warning fa-lg' do
+    Доступные Разделы
+
+-if User.current_role[0] == "Оператор"
+  - t=Task.last
+  - a= t.sections.joins(:lines).where("lines.filial_id" => User.current_role[2]).count
+  - b= t.sections.joins(:lines).where("lines.filial_id = ? and lines.verification = ? ", User.current_role[2], true ).count
+  -# -if a
+  -#   .top-my2
+  -#     = pie_chart [["Заполнено", b], ["Осталось", a-b]], label: "Значение", width: "200px", height: "200px", colors: ["#009900" , "#990000" ]
+  -#   %p.center
+  -#     Заполнено
+  -#     =b
+  -#     из
+  -#     =a
+  -#     Пунктов
+  -#   %p.center
+  -#     Отклонение от ГЗ в %
+  -#     =" (#{((b / a.to_f * 100)*100).round / 100 }%)"
+      -#
+      -#
+      -#
+      -# = (my_otkl(Filial.where(:name => User.current_role[1]).first,t)%100).to_i
+
+  - c=t.sections.joins(:lines).where("lines.filial_id" => User.current_role[2]).group(:kind).count
+  - d=t.sections.joins(:lines).where("lines.filial_id = ? and lines.verification = ? ", User.current_role[2], true ).group(:kind).count
+  - c.keys.each{|k| d[k] = [c[k], d[k]]}
+
+  %h1.center Статистика по разделам
+
+  %table.table_col
+    %thead
+      %tr
+        %th.center= Task.human_attribute_name(:section_id)
+        %th.center  Заполнено
+
+    %tbody
+      - d.each do |k,v|
+        %tr
+          %td.center= k
+          %td.center
+            =v[1]? v[1] : v[1] = 0
+            из
+            =v[0]
+            =" (#{((v[1] / v[0].to_f * 100)*100).round / 100 }%)"
+
+            = pie_chart [["Заполнено", v[1]], ["Осталось", v[0]-v[1]]], legend: false, width: "150px", height: "100px", colors: ["#009900" , "#990000" ]
+
+
+
+-if User.current_role[0] == "Администратор"
+  Здарово бро ты АДМИН

@@ -1,0 +1,136 @@
+%h1.center Список строк
+- if params[:section_id].present?
+  %h3.center= Section.all.find(params[:section_id]).kind
+
+.table-responsive
+  %table.table.table-hover.table-striped.table-condensed
+    %caption.center
+      - if can? :create, Line
+        - if params[:section_id].present?
+          = link_to new_line_path(:section_id => params[:section_id]), class: 'btn btn-success fa-lg' do
+            = fa_icon :plus
+            Создать новую строку
+        - else
+          = link_to new_line_path(), class: 'btn btn-success fa-lg' do
+            = fa_icon :plus
+            Создать новую строку
+        = link_to my_show_lines_path(), class: 'btn btn-warning fa-lg' do
+          = fa_icon :eye
+          Статистика
+    %thead
+      %tr
+        %th.center №
+        %th.center= Line.human_attribute_name(:filial_id)
+        -# %th.center= Line.human_attribute_name(:registry_number)
+        -# %th.center= Line.human_attribute_name(:period)
+        -# %th.center= Line.human_attribute_name(:level)
+        -# %th.center= Line.human_attribute_name(:specialty)
+        -# %th.center= Line.human_attribute_name(:form_of_training)
+        -# %th.center= Line.human_attribute_name(:ovz)
+        %th.center= Line.human_attribute_name(:mark)
+        %th.center= Line.human_attribute_name(:f_mark)
+        %th.center= Line.human_attribute_name(:otkl)
+        %th.center= Line.human_attribute_name(:verification)
+        %th.center Причины отклонений от запланированных значений
+        %th.center
+
+    %tbody
+      - @lines.each_with_index do |line, index|
+        %tr
+          %td.center= index + 1
+          %td.center
+            = line.filial.name
+            %br
+            = line.registry_number
+            %br
+            = line.period
+            %br
+            = line.level
+            %br
+            = line.specialty
+            %br
+            = line.form_of_training
+            %br
+            = line.ovz
+          %td.center= line.mark
+          %td.center
+            -fmark = fact_mark(line)
+            =fmark
+          %td.center
+            .my{'data-background-color' => "#{(otkl_mark(line))}"}
+              .my2
+                =otkl_mark(line)
+
+          %td.center
+            = my_true(line.verification)
+          %td
+            -if fmark < line.mark
+              .m_error
+                Указанные причины отклонения не объясняют раздницу в исполнении госзадания
+            Приём:
+            =line.recruitment
+            Обучаются:
+            =line.studying
+            Выпуск:
+            =line.release
+            %br
+            -if line.comment.present?
+              Комментарий:
+              =line.comment
+            %br
+              %dl
+                -line.reasons.each do |reason|
+                  %dt
+                    =reason.kind
+                    =reason.value
+                    =reason.name
+                    -reason.sourses.each do |sourse|
+                      %dd
+                        =sourse.value
+                        чел.
+                        =sourse.kind1
+                        =sourse.kind
+                        от
+                        =sourse.date_of
+                        №
+                        =sourse.number
+
+              -# = link_to edit_reason_path(reason), class: 'btn btn-info fa-lg' do
+              -#   Редактировать причину
+              -#   = fa_icon :edit
+              -#
+              -# = link_to reason, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+              -#   Удалить причину
+              -#   = fa_icon :times
+            -# %br
+
+
+
+          %td.center
+            -# = link_to line, class: 'btn btn-warning fa-lg' do
+            -#   = fa_icon :eye
+
+            = link_to my_edit_line_path(line), class: 'btn btn-warning fa-lg' do
+              = fa_icon :eye
+              Основные данные
+            %br
+            -if can? :update, @line
+              = link_to edit_line_path(line), class: 'btn btn-info fa-lg' do
+                = fa_icon :edit
+                Редактировать
+              %br
+            -if can? :destroy, @line
+              = link_to line, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger fa-lg' do
+                = fa_icon :times
+                Удалить
+                %br
+            = link_to reasons_url(:line_id => line.id), class: 'btn btn-warning fa-lg' do
+              Отклонения
+              = fa_icon :plus
+  %br
+    .container
+      .toright
+        =paginate @lines
+    .container
+      .toright
+        =page_entries_info @lines, entry_name: 'Строк'

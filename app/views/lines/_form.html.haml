@@ -1,0 +1,79 @@
+= form_for @line do |f|
+  - if @line.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@line.errors.count, "error")} prohibited this line from being saved:"
+      %ul
+        - @line.errors.full_messages.each do |message|
+          %li= message
+
+  .container
+    .row
+      .col-lg-6
+        .form-group
+          = f.label :registry_number
+          .input-group
+            %span.input-group-addon
+              = fa_icon :calendar
+            = f.number_field :registry_number, class: 'form-control'
+      .col-lg-6
+        .form-group
+          = f.label :period
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.text_field :period, class: 'form-control'
+    .row
+      .col-lg-6
+        .form-group
+          = f.label :level
+          .input-group
+            %span.input-group-addon
+              = fa_icon :calendar
+            = f.text_field :level, class: 'form-control'
+      .col-lg-6
+        .form-group
+          = f.label :specialty
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.text_field :specialty, class: 'form-control'
+    .row
+      .col-lg-6
+        .form-group
+          = f.label :form_of_training
+          .input-group
+            %span.input-group-addon
+              = fa_icon :calendar
+            = f.text_field :form_of_training, class: 'form-control'
+      .col-lg-6
+        .form-group
+          = f.label :ovz
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.select(:ovz,options_for_select(['ОВЗ','не ОВЗ'], f.object.ovz), {}, class: 'form-control selectpicker', "data-live-search" => "true" )
+    .row
+      .col-lg-6
+        .form-group
+          = f.label :mark
+          .input-group
+            %span.input-group-addon
+              = fa_icon :calendar
+            = f.number_field :mark, class: 'form-control'
+      -# .col-lg-6
+      -#   .form-group
+      -#     = f.label :section_id
+      -#     .input-group
+      -#       %span.input-group-addon
+      -#         = fa_icon :commenting
+      = f.hidden_field :section_id, class: 'form-control'
+      -# = f.hidden_field :section_id, :value => params[:section_id]
+      .col-lg-6
+        .form-group
+          = f.label :filial_id
+          .input-group
+            %span.input-group-addon
+              = fa_icon :book
+            = f.select :filial_id, options_for_select(Filial.all.map { |e| ["#{e.name + " "+e.description}", e.id] }, f.object.filial_id),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"

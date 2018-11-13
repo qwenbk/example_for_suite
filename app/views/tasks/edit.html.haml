@@ -1,0 +1,11 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to @task, class: 'btn btn-warning fa-lg' do
+  = fa_icon :eye
+
+.my-left
+  %h3 Редактирование госзадания
+  %hr
+
+  = render 'form'

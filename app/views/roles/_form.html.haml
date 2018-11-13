@@ -1,0 +1,25 @@
+= form_for @role do |f|
+  - if @role.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@role.errors.count, "error")} prohibited this role from being saved:"
+      %ul
+        - @role.errors.full_messages.each do |message|
+          %li= message
+  .container
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :name
+          .input-group
+            %span.input-group-addon
+              = fa_icon "newspaper-o"
+            = f.select :name, options_for_select(["Администратор", "Оператор", "Учебный Департамент"]),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+      .col-lg-4
+        .form-group
+          = f.label :description
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.select :description, options_for_select(Filial.all.map { |e| ["#{e.name + " "+e.description}", e.name] }) , {:include_blank => 'Оставить пустым'}, class: 'form-control selectpicker', "data-live-search" => "true"
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"

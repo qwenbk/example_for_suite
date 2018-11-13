@@ -1,0 +1,26 @@
+= form_for @filial do |f|
+  - if @filial.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@filial.errors.count, "error")} prohibited this filial from being saved:"
+      %ul
+        - @filial.errors.full_messages.each do |message|
+          %li= message
+
+  .container
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :name
+          .input-group
+            %span.input-group-addon
+              = fa_icon "newspaper-o"
+            = f.text_field :name, class: 'form-control'
+      .col-lg-4
+        .form-group
+          = f.label :description
+          .input-group
+            %span.input-group-addon
+              = fa_icon :commenting
+            = f.text_field :description, class: 'form-control'
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"

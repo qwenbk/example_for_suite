@@ -1,0 +1,15 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to edit_filial_path(@filial), class: 'btn btn-info fa-lg' do
+  = fa_icon "edit"
+
+%br
+%br
+
+%p
+  %b Name:
+  = @filial.name
+%p
+  %b Description:
+  = @filial.description

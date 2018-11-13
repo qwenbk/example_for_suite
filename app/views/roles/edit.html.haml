@@ -1,0 +1,10 @@
+=link_to 'javascript:history.back()', class: 'btn btn-info fa-lg'  do
+  = fa_icon "arrow-circle-left"
+\
+= link_to edit_role_path(@role), class: 'btn btn-info fa-lg' do
+  = fa_icon "edit"
+
+
+%h1.center Редактирование роли
+%hr
+= render 'form'

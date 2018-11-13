@@ -1,0 +1,51 @@
+= form_for @reason do |f|
+  - if @reason.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@reason.errors.count, "error")} prohibited this reason from being saved:"
+      %ul
+        - @reason.errors.full_messages.each do |message|
+          %li= message
+
+  .container
+    .row
+      .col-lg-12
+        .form-group
+          = f.label :name
+          .input-group
+            %span.input-group-addon
+              = fa_icon "newspaper-o"
+            = f.select :name, options_for_select(some, f.object.name),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+    .row
+      .col-lg-4
+        .form-group
+          = f.label :kind
+          .input-group
+            %span.input-group-addon
+              = fa_icon :pencil
+            = f.select :kind, options_for_select(some1, f.object.kind),{}, class: 'form-control selectpicker', "data-live-search" => "true"
+      .col-lg-4
+        .form-group
+          = f.label :value
+          .input-group
+            %span.input-group-addon
+              = fa_icon "plus-square"
+            = f.number_field :value, class: 'form-control'
+      -# .col-lg-4
+      -#   .form-group
+      -#     = f.label :line_id
+      -#     .input-group
+      -#       %span.input-group-addon
+      -#         = fa_icon :book
+      = f.hidden_field :line_id, class: 'form-control'
+
+
+      .container
+        = f.fields_for :sourses do |sourses|
+          = render 'sourse_fields', f: sourses
+      .container
+        .links
+          = link_to_add_association f, :sourses, class: 'btn btn-success' do
+            = fa_icon :plus
+            Добавить Источник
+    .actions
+      = submit_tag "Создать",  class: "btn btn-primary"

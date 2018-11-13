@@ -1,0 +1,131 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  app:
+    name: Базовое приложение
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    confirm:
+      user: Действительно удалить пользователя?
+      role: Действительно удалить роль?
+    new:
+      user: Новый пользователь
+      role: Новая роль
+      ward: Новая палата
+      hospital_stay_list: Новая запись
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
+    roles:
+      index: Список возможных ролей пользователей
+      edit: Редактирование роли
+      new: Новая роль
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  activerecord:
+    models:
+      user: Пользователь
+      section: Раздел
+      task: Задания
+    attributes:
+      user:
+        first_name: Имя
+        second_name: Фамилия
+        last_name: Отчество
+      role:
+        name: Название роли
+        description: Описание роли (название филиала)
+      filial:
+        name: Название
+        description: Описание
+      task:
+        year: Год
+        comment: Комментарий
+        section_id: Раздел
+      section:
+        kind: Тип раздела
+        comment: Комментарий
+        task_id: Год
+      line:
+        registry_number: Реестровый номер
+        level: Уровень образования
+        form_of_training: Форма обучения
+        mark: Гос.Задание
+        f_mark: Факт Гос.Задание
+        otkl: Отклонение в %
+        period: Период
+        specialty: Специальность
+        ovz: ОВЗ
+        section_id: Раздел
+        verification: Подтверждение
+        recruitment: Прием
+        studying: Обучается
+        release:  Выпуск
+        comment: Комментарий
+        line_id: Строка
+        filial_id: Филиал
+      reason:
+        name: Название причины отклонения
+        kind: Вид отклонения
+        value:  Значение отклонения
+        line_id: Строка
+      sourse:
+        value: Значение отклонения по приказу
+        kind: Тип документа
+        number: Номер документа
+        reason_id: Причина
+        date_of: Дата утверждения документа
+        comment: Комментарий
+        kind1: Тип
+      role_user: &role_users
+        role: Роль
+        role_id: Роль
+        user: Пользователь
+      user/role_users:
+        <<: *role_users
+  unauthorized:
+     manage:
+       all: "У вас нет прав на выполнение данного действия"

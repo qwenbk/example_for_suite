@@ -1,0 +1,52 @@
+= navbar container: 'fluid', class: 'navbar-light' do
+  = navbar_header brand: 'Домой', brand_link: root_path
+  - if user_signed_in?
+    = navbar_collapse do
+      = navbar_group class: 'foo', id: 'menu' do
+
+
+        = navbar_item "Контакты", contact_path
+        -if User.current_role[0] == "Администратор"
+          = navbar_dropdown "Админка" do
+            -# = navbar_dropdown_header 'Great stuff!'
+            -# = navbar_item "One", '/one'
+            -# = navbar_item "Two", '/two'
+            -# = navbar_item "Three", '/three'
+            = navbar_dropdown_divider
+            = navbar_item "Пользователи", users_path
+            = navbar_item "Создать пользователя", new_user_path
+            = navbar_item 'Гос. Задания', tasks_path
+            = navbar_item 'Разделы', sections_path
+            = navbar_item 'Строки', lines_path
+            = navbar_item 'Причины', reasons_path
+            = navbar_item 'Источники', sourses_path
+            = navbar_item 'Филиалы', filials_path
+            = navbar_item 'Роли', roles_path
+      %ul.nav.navbar-nav.navbar-right
+        - if !user_signed_in?
+          %li
+            = link_to new_user_session_path do
+              %span.glyphicon.glyphicon-log-in{"aria-hidden" => "true"}
+                Вход
+        - else
+          = navbar_dropdown rolname(current_user.current_role) do
+            - current_user.roles.sort.each do |role|
+              %li
+                = link_to role.name + " " +role.description, change_users_path(:data => role.id)
+
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
+              = name(current_user)
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                = link_to edit_user_registration_path do
+                  %span.glyphicon.glyphicon-cog{"aria-hidden" => "true"}
+                    Настройки
+
+
+            %li
+              = link_to destroy_user_session_path, :method => :delete do
+                %span.glyphicon.glyphicon-log-out{"aria-hidden" => "true"}
+                  Выход

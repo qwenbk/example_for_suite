@@ -1,0 +1,23 @@
+%h1.center Listing role_users
+
+%table
+  %thead
+    %tr
+      %th= RoleUser.human_attribute_name(:user)
+      %th= RoleUser.human_attribute_name(:role)
+      %th
+      %th
+      %th
+
+  %tbody
+    - @role_users.each do |role_user|
+      %tr
+        %td= role_user.user.email
+        %td= role_user.role.name
+        %td= link_to 'Show', role_user
+        %td= link_to 'Edit', edit_role_user_path(role_user)
+        %td= link_to 'Destroy', role_user, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Role user', new_role_user_path

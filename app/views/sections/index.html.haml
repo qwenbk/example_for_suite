@@ -1,0 +1,39 @@
+%h1.center Список разделов
+
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_section_path, class: 'btn btn-success fa-lg' do
+      = fa_icon :plus
+      Создать новый раздел
+  %thead
+    %tr
+      %th.center= Section.human_attribute_name(:kind)
+      %th.center= Section.human_attribute_name(:comment)
+      %th.center= Section.human_attribute_name(:task_id)
+      %th.center
+      %th.center
+      %th.center
+
+  %tbody
+    - @sections.each do |section|
+      %tr
+        %td.center= section.kind
+        %td.center= section.comment
+        %td.center= section.task.year
+        %td.center
+          = link_to section, class: 'btn btn-warning fa-lg' do
+            = fa_icon :eye
+        %td
+          = link_to edit_section_path(section), class: 'btn btn-info fa-lg' do
+            = fa_icon :edit
+        %td
+          = link_to section, :method => :delete, :data => {:confirm => 'Are you sure?'}, class: 'btn btn-danger fa-lg' do
+            = fa_icon :times
+
+%br
+  .container
+    .toright
+      =paginate @sections
+  .container
+    .toright
+      =page_entries_info @sections, entry_name: 'Разделов'
