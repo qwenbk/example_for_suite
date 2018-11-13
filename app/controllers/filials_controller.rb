@@ -5,7 +5,7 @@ class FilialsController < ApplicationController
   # GET /filials
   # GET /filials.json
   def index
-    @filials = Filial.all.order(:name.upcase)
+    @filials = Filial.all.order(:name)
     respond_to do |format|
       format.html
       format.xlsx{response.headers['Content-Disposition'] = 'attachment; filename="all_products.xlsx"'}
