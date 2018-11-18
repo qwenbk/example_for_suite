@@ -1,32 +1,32 @@
-.top-my
-  .panel.panel-default.devise-bs
-    .panel-heading
-      %h4= t('.sign_up', default: 'Sign up')
-    .panel-body
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f|
-        .form-group
-          = f.label :email
-          .input-group
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-envelope
-            = f.email_field :email, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label :email
-          .input-group
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-envelope
-            = f.text_field :first_name, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label :password
-          .input-group
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-lock
-            = f.password_field :password, autocomplete: 'off', class: 'form-control'
-        .form-group
-          = f.label :password_confirmation
-          .input-group
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-resize-vertical
-            = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
-        = f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary'
-  = render 'devise/shared/links'
+-# .top-my
+-#   .panel.panel-default.devise-bs
+-#     .panel-heading
+-#       %h4= t('.sign_up', default: 'Sign up')
+-#     .panel-body
+-#       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f|
+-#         .form-group
+-#           = f.label :email
+-#           .input-group
+-#             %span.input-group-addon
+-#               %span.glyphicon.glyphicon-envelope
+-#             = f.email_field :email, autofocus: true, class: 'form-control'
+-#         .form-group
+-#           = f.label :first_name
+-#           .input-group
+-#             %span.input-group-addon
+-#               %span.glyphicon.glyphicon-envelope
+-#             = f.text_field :first_name, autofocus: true, class: 'form-control'
+-#         .form-group
+-#           = f.label :password
+-#           .input-group
+-#             %span.input-group-addon
+-#               %span.glyphicon.glyphicon-lock
+-#             = f.password_field :password, autocomplete: 'off', class: 'form-control'
+-#         .form-group
+-#           = f.label :password_confirmation
+-#           .input-group
+-#             %span.input-group-addon
+-#               %span.glyphicon.glyphicon-resize-vertical
+-#             = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+-#         = f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary'
+-#   = render 'devise/shared/links'
